@@ -273,3 +273,9 @@ body {
   width: 100%;
   display: none;
 }
+
+.hide {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}

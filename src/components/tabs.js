@@ -17,13 +17,27 @@ const Tabs = (topics) => {
   //   <div class="tab">technology</div>
   // </div>
   //
+  // Create topics div & assign class
   let topicsDiv = document.createElement('div');
   topicsDiv.classList.add('topics');
+  // Loop through topics array
   topics.forEach((topic) => {
+    // Create topic element
     let topicDiv = document.createElement('div');
+    // Append topic div to topics div
     topicsDiv.appendChild(topicDiv);
+    // Add class
     topicDiv.classList.add('tab');
+    // Add content
     topicDiv.textContent = topic;
+    // Add listener for filtering articles
+    topicDiv.addEventListener('click', (event) => {
+      let divClass = (event.target.textContent === 'node.js' ? 'node' : event.target.textContent)
+      let hideCards = Array.from(document.querySelectorAll(`.card:not(.${divClass})`));
+      let showCards = Array.from(document.querySelectorAll(`.${divClass}`));
+      hideCards.forEach((card) => card.classList.add('hidden'));
+      showCards.forEach((card) => card.classList.remove('hidden'));
+    });
   })
   return topicsDiv;
 }

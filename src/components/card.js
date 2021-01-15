@@ -69,7 +69,11 @@ const cardAppender = (selector) => {
     .get('https://lambda-times-api.herokuapp.com/articles')
     .then((res) => {
       for (let property in res.data.articles) {
-        res.data.articles[property].forEach((article) => element.appendChild(Card(article)));
+        res.data.articles[property].forEach((article) => {
+          let card = Card(article);
+          card.classList.add(property);
+          element.appendChild(card);
+        });
       }
     })
     .catch((err) => {debugger});
