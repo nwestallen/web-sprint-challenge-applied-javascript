@@ -48,6 +48,9 @@ const Card = (article) => {
   imgTag.src = article.authorPhoto;
   authorSpan.textContent = article.authorName;
 
+  //Add Listener
+  cardDiv.addEventListener('click', () => console.log(article.headline));
+
   //Return card
   return cardDiv;
 }
